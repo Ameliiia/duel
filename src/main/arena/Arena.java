@@ -1,4 +1,4 @@
-package fr.ayust.arena;
+package arena;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Player;

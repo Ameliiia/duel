@@ -1,6 +1,6 @@
-package fr.ayust.command;
+package command;
 
-import fr.ayust.arena.ArenaManager;
+import arena.ArenaManager;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
