@@ -40,7 +40,7 @@ public class Duel implements CommandExecutor {
                 if (args[0].equalsIgnoreCase("accept")) {
 
                     if (players.containsKey(p)) {
-                        p.sendMessage("Votre duel contre§r va commencer");
+                        p.sendMessage("Votre duel contre §r va commencer");
                         Player firstP = players.get(p);
                         firstP.sendMessage("Votre duel contre §1" + p.getName() + "§r va commencer");
 
@@ -63,7 +63,7 @@ public class Duel implements CommandExecutor {
                     Player target = Bukkit.getPlayer(targetName);
                     // Si qqn a déjà envoyé une requête au joueur ciblé, la requête n'a pas lieu
                     if (players.containsKey(target)) {
-                        p.sendMessage("§4 Il semblerait qu'on vous ait volé votre cible :D");
+                        p.sendMessage("§4 Le joueur ciblé a déjà une demande de duel en attente");
                     }
                     
                     else {

@@ -34,7 +34,6 @@ public class Main extends JavaPlugin {
             }
         }
         arenaConfig = YamlConfiguration.loadConfiguration(arenaFile);
-
         ConfigurationSection arenaSection = arenaConfig.getConfigurationSection("arenas");
 
         for(String string : arenaSection.getKeys(false)) {
