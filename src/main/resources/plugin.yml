@@ -1,0 +1,11 @@
+name: duel
+author: Ayust
+main: fr.ayust.Main
+version: '1.0'
+description: Mon plugin de duel
+prefix: Duel
+commands:
+  double:
+    description: sert à lancer un 2v2
+  duel:
+    description: sert à lancer un duel
