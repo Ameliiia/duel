@@ -1,4 +1,6 @@
-import command.duel;
+package main;
+
+import main.command.Duel;
 import org.bukkit.configuration.Configuration;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -15,8 +17,8 @@ public class Main extends JavaPlugin {
         YamlConfiguration arenaConfig;
         File arenaFile;
 
-        getLogger().info("[Duel] has been enable");
-        getCommand("duel").setExecutor(new duel());
+        getLogger().info("[Duel] has been enabled");
+        getCommand("duel").setExecutor(new Duel());
 
         if(!getDataFolder().exists()) {
             getDataFolder().mkdir();
@@ -45,7 +47,7 @@ public class Main extends JavaPlugin {
     @Override
     public void onDisable() {
 
-        getLogger().info( "[Duel] has been enable");
+        getLogger().info( "[Duel] has been disabled");
 
     }
 }

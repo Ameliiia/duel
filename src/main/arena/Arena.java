@@ -1,4 +1,4 @@
-package arena;
+package main.arena;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Player;

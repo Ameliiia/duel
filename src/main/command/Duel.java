@@ -1,6 +1,7 @@
-package command;
+package main.command;
 
-import arena.ArenaManager;
+import main.arena.ArenaManager;
+import main.arena.ArenaManager;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
@@ -14,21 +15,21 @@ import java.util.HashMap;
 import java.util.Map;
     
 public class Duel implements CommandExecutor {
-
-    private Map<Player, Player[]> players = new HashMap<>();  // /!\ May crash
-    private ArenaManager arenamanager = new ArenaManager();
+    // TODO : Liste de Players pour qu'un joueur puisse recevoir pls invitations de duel
+    private Map<Player, Player> players = new HashMap<>();
+    private ArenaManager arenamanager = ArenaManager.getInstance();
 
 
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         // TODO : Empêcher le joueur de s'envoyer une demande de duel à lui même
         // TODO : Ajouter condition fin duel (mort ou fin d'un timer)
         // TODO : Impossibilité d'envoyer deux requêtes au même joueur
-        
+        // TODO : Pendant un duel les joueurs ne peuvent pas faire de commande liée aux duels.
 
         if (label.equalsIgnoreCase("duel") && sender instanceof Player) {
             Player p = (Player) sender;
             if (args.length == 0) {
-                p.sendMessage("§c/!\\ Votre commande est invalide, utilisez :")
+                p.sendMessage("§c/!\\ Votre commande est invalide, utilisez :");
                 p.sendMessage("§6/§rduel <player>");
                 p.sendMessage("§6/§rduel <accept/refuse>");
                 return true;

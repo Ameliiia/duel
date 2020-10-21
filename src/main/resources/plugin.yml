@@ -1,6 +1,6 @@
 name: duel
 author: Ayust
-main: fr.ayust.Main
+main: Main
 version: '1.0'
 description: Mon plugin de duel
 prefix: Duel
