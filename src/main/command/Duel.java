@@ -13,18 +13,22 @@ import org.bukkit.entity.Player;
 import java.util.HashMap;
 import java.util.Map;
     
-public class duel implements CommandExecutor {
+public class Duel implements CommandExecutor {
 
-    private Map<Player, Player> players = new HashMap<>();
+    private Map<Player, Player[]> players = new HashMap<>();  // /!\ May crash
     private ArenaManager arenamanager = new ArenaManager();
 
 
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        // TODO : Empêcher le joueur de s'envoyer une demande de duel à lui même
+        // TODO : Ajouter condition fin duel (mort ou fin d'un timer)
+        // TODO : Impossibilité d'envoyer deux requêtes au même joueur
+        
 
         if (label.equalsIgnoreCase("duel") && sender instanceof Player) {
             Player p = (Player) sender;
             if (args.length == 0) {
-
+                p.sendMessage("§c/!\\ Votre commande est invalide, utilisez :")
                 p.sendMessage("§6/§rduel <player>");
                 p.sendMessage("§6/§rduel <accept/refuse>");
                 return true;
@@ -39,6 +43,7 @@ public class duel implements CommandExecutor {
                         Player firstP = players.get(p);
                         firstP.sendMessage("Votre duel contre §1" + p.getName() + "§r va commencer");
 
+                        // TODO : Utiliser les coordonnées du .yml
                         p.teleport(new Location(Bukkit.getWorld("world"), 0, 63, 0));
                         firstP.teleport(new Location(Bukkit.getWorld("world"), 0, 63, 0));
 
@@ -55,14 +60,16 @@ public class duel implements CommandExecutor {
                 } else if (Bukkit.getPlayer(targetName) != null) {
 
                     Player target = Bukkit.getPlayer(targetName);
-
+                    // Si qqn a déjà envoyé une requête au joueur ciblé, la requête n'a pas lieu
                     if (players.containsKey(target)) {
-                        p.sendMessage("§4 Il semblerait qu'on vous à voler votre cible :D");
+                        p.sendMessage("§4 Il semblerait qu'on vous ait volé votre cible :D");
                     }
-                    players.put(target, p);
-                    p.sendMessage("Vous avez demander un duel à §1" + targetName);
-                    target.sendMessage("Vous venez de recevoir une proposition de duel de §1" + p.getName());
-
+                    
+                    else {
+                        players.put(target, p);
+                        p.sendMessage("Vous avez demandé un duel à §1" + targetName);
+                        target.sendMessage("Vous venez de recevoir une proposition de duel de §1" + p.getName());
+                    }
 
                 } else {
                     p.sendMessage("Le joueur §1" + targetName + "§r n'est pas connecté!");
