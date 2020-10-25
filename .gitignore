@@ -1,5 +1,5 @@
 # Project exclude paths
+*.class
+*.xml
+*.iml
 /target/
-/.idea/
-/.xml/
-/.iml/
